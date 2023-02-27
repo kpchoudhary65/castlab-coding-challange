@@ -45,3 +45,41 @@ Restrictions
 ============
 
 None! Use whatever tools / third party libraries you feel are necessary to complete the task.
+
+User manual
+===========
+
+Create .env.dev in license_portal directory 
+and add configs details
+
+```
+POSTGRES_DB=***
+POSTGRES_HOST=***
+POSTGRES_USER=***
+POSTGRES_PASSWORD=***
+POSTGRES_PORT=**
+EMAIL_HOST=***
+EMAIL_PORT=***
+EMAIL_HOST_USER=*** # E-mail ID
+EMAIL_HOST_PASSWORD=*** # Email Password
+```
+Now run command : docker-compose up --build
+docker exec -it <your web container name> bash 
+
+run command on bash:
+1. python manage.py migrate # To create tables in database 
+2. python manage.py createsuperuser # To create superuser
+
+
+Fill details for superuser
+
+To access admin panel go to the URL  
+```
+http://127.0.0.1:8080/admin
+```
+With admin panel you can create client and licenses
+
+Front-end URL
+```
+http://127.0.0.1:3000
+```

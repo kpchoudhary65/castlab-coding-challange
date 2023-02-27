@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+import importlib
+license_views = importlib.import_module("licenses.views")
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'', license_views.SendMailView.as_view())
 ]

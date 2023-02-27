@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<strong>Dear {{license.client.client_name}}</strong>
+<p>
+    We are writing to inform you that your license ID:- {{license.id}} Type:- {{license_type}} and Package:- {{package_name}}
+    will expire on {{license.expiration_datetime}}, and we wanted to remind you so that you can take
+    appropriate action to renew your license.Please note that if you do not renew your license by the expiry date,
+    you will no longer have access to the full features of Product. We encourage you to renew your license at your
+    earliest convenience to avoid any interruptions to your use of the product.
+    If you have any questions or concerns, please do not hesitate to contact our support team at [Support email]
+    or by phone at [Support Phone Number]. We are here to assist you with any issues you may have.
+
+    Thank you for using [Product], and we look forward to continuing to serve you.
+
+
+</p>
+<div style="margin-top: 20px;">
+  <p style="font-size: 16px; font-weight: bold; margin-bottom: 0;">Thanks and Regards,</p>
+  <p style="font-size: 14px; margin-top: 0; margin-bottom: 10px;">{{license.client.poc_contact_name}}</p>
+  <p style="font-size: 14px; margin-top: 0; margin-bottom: 10px;">{{license.client.poc_contact_email}}</p>
+</div>
+
+</body>
+</html>

@@ -1,15 +1,40 @@
-services:
-  license-server:
-    build:
-      context: ./license_portal
-    links:
-      - postgres
-    volumes:
-      - ./license_portal:/app
+version: '3'
 
-  postgres:
-    image: 'postgres:13'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./license_portal/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8080
+    env_file:
+      - ./license_portal/.env.dev
+    volumes:
+      - ./license_portal/:/app/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./frontend/.env
+#    environment:
+#      - REACT_APP_API_URL=http://localhost:8080
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - web
+
+  db:
+    image: postgres
     environment:
-     POSTGRES_USER: 'licenses'
-     POSTGRES_PASSWORD: 'licenses'
-     POSTGRES_DB: 'licenses'
+      POSTGRES_DB: licenses
+      POSTGRES_USER: licenses
+      POSTGRES_PASSWORD: licenses
+    ports:
+      - "5432:5432"
